@@ -1,0 +1,16 @@
+---
+- name: Preparing Workstation
+  hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+
+    - name: Install the latest version of Apache
+      ansible.builtin.apt:
+        name: apache2
+        state: latest
+     
+    - name: Restart service Apache, in all cases
+      ansible.builtin.service:
+        name: apache2
+        state: restarted   
